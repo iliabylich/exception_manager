@@ -5,7 +5,7 @@ require 'exception_manager/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'exception_manager'
-  spec.version       = ExceptionManager::VERSION
+  spec.version       = ExceptionManager::Version::STRING
   spec.authors       = ['Ilya Bylich']
   spec.email         = ['ibylich@gmail.com']
   spec.summary       = 'Tool for managing exceptions'
@@ -21,4 +21,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'bundler', '~> 1.7'
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'rspec', '~> 3.2.0'
+  spec.add_development_dependency 'pry', '~> 0.10.1'
 end

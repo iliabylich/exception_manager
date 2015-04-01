@@ -1,5 +1,19 @@
+require 'pry'
 require 'exception_manager/version'
 
 module ExceptionManager
-  # Your code goes here...
+  require 'exception_manager/config'
+  extend ExceptionManager::Config
+
+  module Methods
+    autoload :Base, 'exception_manager/methods/base'
+    autoload :Locals, 'exception_manager/methods/locals'
+    autoload :Subject, 'exception_manager/methods/subject'
+    autoload :SubjectInstanceVariables, 'exception_manager/methods/subject_instance_variables'
+    autoload :SubjectClassVariables, 'exception_manager/methods/subject_class_variables'
+  end
+
+  autoload :Notifier, 'exception_manager/notifier'
 end
+
+require 'exception_manager/patch'
