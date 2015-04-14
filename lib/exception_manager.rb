@@ -5,7 +5,6 @@ module ExceptionManager
   extend ExceptionManager::Config
 
   module Methods
-    autoload :Base, 'exception_manager/methods/base'
     autoload :Locals, 'exception_manager/methods/locals'
     autoload :Subject, 'exception_manager/methods/subject'
     autoload :SubjectInstanceVariables, 'exception_manager/methods/subject_instance_variables'

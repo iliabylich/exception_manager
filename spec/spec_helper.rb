@@ -2,6 +2,7 @@ ROOT = Pathname.new(File.expand_path('../..', __FILE__))
 $: << ROOT
 require 'exception_manager'
 require 'pry'
+require 'rspec/its'
 
 Dir[ROOT.join('spec/support/**/*.rb')].each { |f| require f }
 
@@ -17,4 +18,6 @@ RSpec.configure do |config|
   config.before(:suite) do
     ExceptionManager.enable!
   end
+
+  config.order = :random
 end

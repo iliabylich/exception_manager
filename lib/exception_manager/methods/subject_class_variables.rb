@@ -1,4 +1,4 @@
-class ExceptionManager::Methods::SubjectClassVariables < ExceptionManager::Methods::Base
+class ExceptionManager::Methods::SubjectClassVariables
   def self.run(exception_binding)
     exception_binding.eval %q{
       klass = is_a?(Class) ? self : self.class

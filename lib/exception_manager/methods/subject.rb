@@ -1,4 +1,4 @@
-class ExceptionManager::Methods::Subject < ExceptionManager::Methods::Base
+class ExceptionManager::Methods::Subject
   def self.run(exception_binding)
     exception_binding.eval('self')
   end

@@ -2,19 +2,19 @@ module ExceptionManager::ExceptionPatch
   attr_accessor :_binding
 
   def locals
-    ExceptionManager::Methods::Locals.fetch(_binding)
+    ExceptionManager::Methods::Locals.run(_binding)
   end
 
   def subject
-    ExceptionManager::Methods::Subject.fetch(_binding)
+    ExceptionManager::Methods::Subject.run(_binding)
   end
 
   def subject_instance_variables
-    ExceptionManager::Methods::SubjectInstanceVariables.fetch(_binding)
+    ExceptionManager::Methods::SubjectInstanceVariables.run(_binding)
   end
 
   def subject_class_variables
-    ExceptionManager::Methods::SubjectClassVariables.fetch(_binding)
+    ExceptionManager::Methods::SubjectClassVariables.run(_binding)
   end
 
   def summary

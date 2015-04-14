@@ -1,4 +1,4 @@
-class ExceptionManager::Methods::Locals < ExceptionManager::Methods::Base
+class ExceptionManager::Methods::Locals
   def self.run(exception_binding)
     exception_binding.eval %q{
       local_variables.inject({}) do |hash, local_variable_name|
