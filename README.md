@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/iliabylich/exception_manager.svg?branch=master)](https://travis-ci.org/iliabylich/exception_manager)
+[![Code Climate](https://codeclimate.com/github/iliabylich/exception_manager/badges/gpa.svg)](https://codeclimate.com/github/iliabylich/exception_manager)
+
 # ExceptionManager
 
 Gem for better exception recording.
