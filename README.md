@@ -58,8 +58,9 @@ e._binding.pry
 
 ## Integration with monitoring systems like NewRelic
 
-NewRelic uses `to_s` method for fetching message from exception
-(https://github.com/newrelic/rpm/blob/master/lib/new_relic/noticed_error.rb#L33).
+NewRelic uses `to_s` method for fetching message from exception:
+[source](https://github.com/newrelic/rpm/blob/master/lib/new_relic/noticed_error.rb#L33).
+
 Unfortunately you cannot override `to_s` method like this:
 
 ```ruby
@@ -72,7 +73,9 @@ class YourApiBaseException < StandardError
 end
 ```
 
-The solution is in this line: https://github.com/newrelic/rpm/blob/master/lib/new_relic/noticed_error.rb#L31
+The solution is in this line:
+[source](https://github.com/newrelic/rpm/blob/master/lib/new_relic/noticed_error.rb#L31)
+
 Instead of overriding `to_s` method we can override `original_exception` method:
 
 ```ruby
