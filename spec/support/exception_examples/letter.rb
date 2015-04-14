@@ -19,10 +19,4 @@ class Letter
     exception_message = "'#{recipient}' does not want to receive emails from you"
     raise CannotDeliverMessageError, exception_message
   end
-
-  def self.local_binding
-    a = 1
-    b = 2
-    binding
-  end
 end

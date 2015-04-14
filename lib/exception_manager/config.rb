@@ -19,7 +19,9 @@ module ExceptionManager::Config
 
   def tracepoint
     @tracepoint ||= TracePoint.new(:raise) do |tp|
-      tp.raised_exception._binding = tp.binding
+      if ExceptionManager.applicable?(tp.raised_exception)
+        tp.raised_exception._binding = tp.binding
+      end
     end
   end
 
@@ -32,25 +34,17 @@ module ExceptionManager::Config
   end
 
   def reset_filters!
-    @fliters = []
+    @filters = []
+  end
+
+  def applicable?(exception)
+    filters.all? do |filter|
+      filter.call(exception)
+    end
   end
 
   def logger
     @logger = Logger.new(STDOUT)
   end
   attr_writer :logger
-
-  module Notifications
-    WARN = :warn
-    RAISE = :raise
-    NO = :no
-  end
-
-  def notification_level
-    @notification_level ||= Notifications::WARN
-  end
-
-  def notify_with(level)
-    @notification_level = level
-  end
 end

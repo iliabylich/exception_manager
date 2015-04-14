@@ -6,9 +6,7 @@ class ExceptionManager::Methods::Base
   end
 
   def self.fetch(exception_binding)
-    ExceptionManager::Notifier.with_notification do
-      run(exception_binding)
-    end
+    run(exception_binding)
   end
 
   def self.run(exception_binding)

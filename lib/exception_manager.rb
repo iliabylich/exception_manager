@@ -1,4 +1,3 @@
-require 'pry'
 require 'exception_manager/version'
 
 module ExceptionManager
@@ -12,8 +11,6 @@ module ExceptionManager
     autoload :SubjectInstanceVariables, 'exception_manager/methods/subject_instance_variables'
     autoload :SubjectClassVariables, 'exception_manager/methods/subject_class_variables'
   end
-
-  autoload :Notifier, 'exception_manager/notifier'
 end
 
 require 'exception_manager/patch'
