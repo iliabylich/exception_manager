@@ -10,6 +10,8 @@ module ExceptionManager
     autoload :SubjectInstanceVariables, 'exception_manager/methods/subject_instance_variables'
     autoload :SubjectClassVariables, 'exception_manager/methods/subject_class_variables'
   end
+
+  DisabledError = Class.new(StandardError)
 end
 
 require 'exception_manager/patch'

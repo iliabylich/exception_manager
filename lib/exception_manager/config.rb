@@ -47,4 +47,8 @@ module ExceptionManager::Config
     @logger = Logger.new(STDOUT)
   end
   attr_writer :logger
+
+  def required!
+    raise ExceptionManager::DisabledError if disabled?
+  end
 end

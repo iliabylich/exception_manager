@@ -15,6 +15,16 @@ describe ExceptionManager do
     end
   end
 
+  shared_examples 'requires ExceptionManager to be enabled' do |method_name|
+    context 'when ExceptionManager is disabled' do
+      before { ExceptionManager.disable! }
+
+      it 'raises error' do
+        expect { error.locals }.to raise_error(ExceptionManager::DisabledError)
+      end
+    end
+  end
+
   describe 'Exception#locals' do
     let(:expected) do
       {
@@ -26,12 +36,16 @@ describe ExceptionManager do
     it 'returns Hash of local variables available when #raise happened' do
       expect(error.locals).to eq(expected)
     end
+
+    include_examples 'requires ExceptionManager to be enabled', :locals
   end
 
   describe 'Exception#subject' do
     it 'returns context of place when subject was raised' do
       expect(error.subject).to be_a(Letter)
     end
+
+    include_examples 'requires ExceptionManager to be enabled', :locals
   end
 
   describe 'Exception#subject_instance_variables' do
@@ -45,6 +59,8 @@ describe ExceptionManager do
     it 'returns instance variables of #subject when #raise happened' do
       expect(error.subject_instance_variables).to eq(expected)
     end
+
+    include_examples 'requires ExceptionManager to be enabled', :locals
   end
 
   describe 'Exception#subject_class_variables' do
@@ -57,6 +73,8 @@ describe ExceptionManager do
     it 'returns class variables of #subject when #raise happened' do
       expect(error.subject_class_variables).to eq(expected)
     end
+
+    include_examples 'requires ExceptionManager to be enabled', :locals
   end
 
   describe 'Exception#summary' do
@@ -77,5 +95,7 @@ describe ExceptionManager do
       expect(error.summary[:subject_instance_variables]).to be_a(Hash)
       expect(error.summary[:subject_class_variables]).to be_a(Hash)
     end
+
+    include_examples 'requires ExceptionManager to be enabled', :locals
   end
 end

@@ -1,5 +1,6 @@
 class ExceptionManager::Methods::SubjectClassVariables
   def self.run(exception_binding)
+    ExceptionManager.required!
     exception_binding.eval %q{
       klass = is_a?(Class) ? self : self.class
       klass.class_variables.inject({}) do |hash, class_variable_name|
