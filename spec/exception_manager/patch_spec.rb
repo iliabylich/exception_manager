@@ -11,7 +11,7 @@ describe ExceptionManager do
 
   describe 'Kernel.raise' do
     it 'still raises exception' do
-      expect { raise 'foo' }.to raise_error
+      expect { raise 'foo' }.to raise_error(RuntimeError)
     end
   end
 
